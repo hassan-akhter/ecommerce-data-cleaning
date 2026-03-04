@@ -37,39 +37,39 @@ Data cleaning is one of the most important skills in data work. Before you can a
 
 ## What I did — Step by Step
 
-**Step 1 — Remove Duplicates**  
+**Step 1: Remove Duplicates**  
 Dropped 25 exact duplicate rows using `drop_duplicates()`.
 
-**Step 2 — Customer Name**  
+**Step 2: Customer Name**  
 Stripped whitespace, standardised to Title Case, filled nulls with "Unknown".
 
-**Step 3 — Email**  
+**Step 3: Email**  
 Wrote a custom `is_valid_email()` function that checks for exactly one @, a non-empty username and domain, a dot in the domain, and no spaces. Invalid emails replaced with `unknown@unknown.com`.
 
-**Step 4 — Phone Number**  
+**Step 4: Phone Number**  
 Stripped all non-digit characters using regex, then reformatted as XXX-XXX-XXXX if exactly 10 digits. Anything unparseable left as NaN — a fake phone number is worse than no phone number.
 
-**Step 5 — Category**  
+**Step 5: Category**  
 Standardised to Title Case, filled nulls with the most common category (mode).
 
-**Step 6 — Price**  
+**Step 6: Price**  
 Stripped currency symbols ($, £) using regex, converted to float. Filled missing prices with the **median** — not mean, because median is less affected by extreme values.
 
-**Step 7 — Outlier Removal (IQR Method)**  
+**Step 7: Outlier Removal (IQR Method)**  
 Used the IQR method to define a valid price range:
 `Q1 - 1.5×IQR` to `Q3 + 1.5×IQR`. 
 Anything outside that range removed as a likely data entry error.
 
-**Step 8 — Quantity**  
+**Step 8: Quantity**  
 Filled nulls with median, converted from float back to integer (`Int64` — pandas nullable integer type).
 
-**Step 9 — Order Date**  
+**Step 9: Order Date**  
 Used `pd.to_datetime(dayfirst=True, errors="coerce")` to handle 5+ date formats automatically. Unparseable dates filled with the mode.
 
-**Step 10 — Order Status**  
+**Step 10: Order Status**  
 Standardised to Title Case, filled nulls with "Unknown".
 
-**Step 11 — Country**  
+**Step 11: Country**  
 Standardised to Title Case, fixed abbreviations (USA, UK), filled nulls with "Unknown".
 
 
