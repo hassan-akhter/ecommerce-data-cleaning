@@ -99,7 +99,7 @@ Standardised to Title Case, fixed abbreviations (USA, UK), filled nulls with "Un
 
 | File | Description |
 |---|---|
-| `Data_Cleaning.ipynb` | Main notebook with all cleaning steps |
+| `data_cleaning.ipynb` | Main notebook with all cleaning steps |
 | `ecommerce_dirty.csv` | Raw messy dataset |
 | `ecommerce_clean.csv` | Final cleaned output |
 
